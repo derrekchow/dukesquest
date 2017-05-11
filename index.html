@@ -96,7 +96,7 @@
 				<h4>Marry Claudio to Juliet</h4>
 			</div>
 		</div>
-		<h5 onclick="if ($('h4.selected').length == 5) { $('.slide').show(); $('.slide').not('#win').hide(); } else { $('.slide').show(); $('.slide').not('#fail').hide(); }">Save Vienna!</h5><hr>
+		<h5 onclick="if ($('h4.selected').length == 5) { $('.slide').show(); $('.slide').not('#win').hide(); } else { $('.slide').show(); $('.slide').not('#fail').hide(); } $('h4').removeClass('selected');">Save Vienna!</h5><hr>
 		<p>"Whats mine is yours, and what is yours is mine. So, bring us to our palace, where well show Whats yet behind meet you all should know." (v.i.611)</p>
 		<br><br>
 
@@ -136,7 +136,7 @@ var scenes = [
 		"image": "http://www.clipartkid.com/images/444/franciscan-friar-order-of-friars-minor-C5r9lx-clipart.png",
 		"info": "You are with Friar Thomas when he asks you why you had to let Angelo enforce the laws instead of doing it yourself.",
 		"choices": [
-					["Tell Friar Thomas you do not want to look bad in front of your own people.", -1], 
+					["Tell Friar Thomas to mind his own business.", -1], 
 					["Tell Friar Thomas you would seem too cruel, so its better that Angelo enforce the laws.", 2],
 					["Change your mind and return to Vienna as the Duke.", 0], 
 				],
@@ -181,12 +181,12 @@ var scenes = [
 	{
 		"title": "Act 4 Scene 1",
 		"image": "https://image000.tutpad.com/tut/0/53/32-done.gif",
-		"info": "The plan has worked! However, Angelo will still execute Claudio in order to invalidate Isabella and prevent revenge. You visits Provost and tel him at Claudios jail just before he is to be executed, a drunk pirate named Barnardine is also in the jail to be executed.",
+		"info": "The plan has worked! However, Angelo will still execute Claudio in order to invalidate Isabella and prevent revenge. You visits Provost and tel him at Claudios jail just before he is to be executed, a drunk pirate is also in the jail who died the night before",
 		"choices": [
 					["Absolve Claudio of his sins again!", -1, "cyan"], 
 					["Save Claudio by returning to Vienna as the Duke.", -1],
 					["Have Claudios head sent to Angelo.", -1],
-					["Eexecute Barnardine, make him look like Claudio, and send his head to Lord Angelo.", 6]
+					["Make the pirate look like Claudio, and send his head to Lord Angelo.", 6]
 				],
 		"quote": "\"By the vow of mine order I warrant you, if my instructions may be your guide. Let this Barnardine be this morning executed and his head borne to Angelo.\" (iv.ii.183)"
 	},
