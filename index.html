@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<style>
+		@font-face {
+		  font-family: "Press Start";
+		  src: url(pressstart.ttf) format("truetype");
+		}
+		body {
+			background-color:black;
+			color:white;
+			font-family: "Press Start", sans-serif;
+			padding:10px 150px;
+		}
+		figure {
+			display:inline-block;
+		}
+		h3, h4 {
+			font-size: 20px;
+		}
+		h3:hover, figure:hover, h4:hover, h5:hover {
+			color:yellow !important;
+			cursor: pointer !important;
+		}
+		h5 {
+			font-size:50px;
+			background-color: white;
+			color:black;
+			width:400px;
+			padding:10px;
+		}
+		#fail, #intro {
+			margin-top:50px;
+		}
+		.selected {
+			color:fuchsia;
+		}
+	</style>
+</head>
+
+<body align="center">
+	<div align="left">
+		<p id="score"></p>
+	</div>
+	<div id="intro" class="slide" align="center">
+		<h1>Measure for Measure: The Duke's Quest</h1>
+		<img id="image" src="https://media.giphy.com/media/4Ev86GEC6XVGE/giphy.gif" height="300" />
+		<h5 onclick="$('.slide').show(); $('.slide').not('#scene').hide(); loadScene(scenes[0]);">Start</h5>
+	</div>
+	<div id="character" class="slide">
+		<h1>Return to Vienna! Select your habit:</h1>
+		<figure>
+			<img src="http://www.clipartkid.com/images/444/franciscan-friar-order-of-friars-minor-C5r9lx-clipart.png" style="opacity: .5" height="300" />
+			<figcaption>Friar Laurence (unavailable)</figcaption>
+		</figure>
+		<figure onclick="$('.slide').show(); $('.slide').not('#scene').hide(); loadScene(scenes[1])">
+			<img src="https://userscontent2.emaze.com/images/e24ec010-77fe-4598-aec6-72948fe75d14/762d7baac03329288a42fff55b076290.png" height="300" />
+			<figcaption>Friar Lodwick</figcaption>
+		</figure>
+		<figure>
+			<img src="https://cdn0.rubylane.com/shops/1006384/1707.1L.jpg" style="opacity: .5" height="300" />
+			<figcaption>Friar Mug (unavailable)</figcaption>
+		</figure>
+		<br><br><hr>
+		<p>"Supply me with the habit and instruct me How I may formally in person bear me Like a true friar." (i.ii.4)</p><br><br>
+	</div>
+	<div id="fail" class="slide" align="center">
+		<h1 style="color:red">You Failed!</h1>
+		<h2>Vienna is in ruins!</h2>
+
+		<h5 style="margin:200px" onclick="$('.slide').show(); $('.slide').not('#intro').hide();">Play Again?</h5>
+
+		<br><br><hr>
+		<p>"Haste still pays haste, and leisure answers leisure; Like doth quit like, and measure still for measure." (v.i.466)</p>	<br><br>
+	</div>
+	<div id="win" class="slide" align="center">
+		<h1 style="color:lime">You Won!</h1>
+		<h2>Vienna is saved!?</h2>
+
+		<h5 style="margin:200px" onclick="$('.slide').show(); $('.slide').not('#intro').hide();">Play Again?</h5>
+
+		<br><br><hr>
+		<p>"Haste still pays haste, and leisure answers leisure; Like doth quit like, and measure still for measure." (v.i.466)</p>	<br><br>
+	</div>
+	<div id="end" class="slide" align="center">
+		<h1>Use your powers as the Duke!</h1>
+		<br><br><br>
+		<div align="left">
+			<h2>Select all the verdicts you wish to apply:</h2><br>
+			<div style="margin-left:50px">
+				<h4>Marry Angelo to Mariana.</h4><br>
+				<h4>Fire Provost then give him another job.</h4><br>
+				<h4>Pardon Barnardine</h4><br>
+				<h4>Marry Isabella</h4><br>
+				<h4>Marry Claudio to Juliet</h4>
+			</div>
+		</div>
+		<h5 onclick="if ($('h4.selected').length == 5) { $('.slide').show(); $('.slide').not('#win').hide(); } else { $('.slide').show(); $('.slide').not('#fail').hide(); }">Save Vienna!</h5><hr>
+		<p>"Whats mine is yours, and what is yours is mine. So, bring us to our palace, where well show Whats yet behind meet you all should know." (v.i.611)</p>
+		<br><br>
+
+	</div>
+	<div id="scene" class="slide">
+		<h1 id="title"></h1>
+		<h2 id="info"></h2><br>
+		<img id="image" height="300" /><br><br><br>
+		<div id="choices" align="left">
+
+		</div><br><hr>
+		<p id="quote"></p>
+		<br>
+	</div>
+
+</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<audio id="beep">
+		<source src="http://www.downloadfreesound.com/wp-content/uploads/2013/08/Beep8.wav">
+	</audio>
+
+<script>
+var scenes = [
+	{
+		"title": "Act 1 Scene 1",
+		"image": "http://rs65.pbsrc.com/albums/h223/potentialmisfit/crown2_zps7c70f94e.gif~c200",
+		"info": "You must leave Vienna immediately so you summon Lord Angelo.",
+		"choices": [
+					["Give Lord Angelo complete control over Vienna and see what happens.", -2], 
+					["Give the wise, intelligent, and just Lord Escalus control over Vienna.", -1], 
+					["Give a group of trusted advisors shared control of Vienna.", -1]
+				],
+		"quote": "\"If any in Vienna be of worth To undergo such ample grace and honor, It is Lord Angelo.\" (i.i.23)"
+	},
+	{
+		"title": "Act 1 Scene 1",
+		"image": "http://www.clipartkid.com/images/444/franciscan-friar-order-of-friars-minor-C5r9lx-clipart.png",
+		"info": "You are with Friar Thomas when he asks you why you had to let Angelo enforce the laws instead of doing it yourself.",
+		"choices": [
+					["Tell Friar Thomas you do not want to look bad in front of your own people.", -1], 
+					["Tell Friar Thomas you would seem too cruel, so its better that Angelo enforce the laws.", 2],
+					["Change your mind and return to Vienna as the Duke.", 0], 
+				],
+		"quote": "\"Twould be my tyranny to strike and gall them For what I bid them do; for we bid this be done\" (i.iii.39)"
+	},
+	{
+		"title": "Act 2 Scene 3",
+		"image": "http://rs41.pbsrc.com/albums/e251/tessilah32/Cute%20Pixels/beatingheart.gif~c200",
+		"info": "You visit Juliet in her cell and determine her love to Claudio is true. She repents her sins to you and begs for Claudios life.",
+		"choices": [
+					["Absolve her sins!", 3, "cyan"], 
+					["Tell her Claudio must die and leave.", 3],
+					["Save Claudio and Juliet by returning to Vienna as the Duke.", -1], 
+					["Return to Friar Thomas.", 1],
+				],
+		"quote": "\"Your partner, as I hear, must die tomorrow, And I am going with instruction to him. Grace go with you.\" (ii.iii.41)"
+	},
+	{
+		"title": "Act 3 Scene 1",
+		"image": "http://rs875.pbsrc.com/albums/ab316/etoile--filante/pixel/skull1.gif~c200",
+		"info": "You visit Claudio in his cell, he begs for his life.",
+		"choices": [
+					["Absolve his sins!", 4, "cyan"], 
+					["Convince Claudio that he should not fear death but rather welcome it, life is pointless and not worth living, death is the final sleep that relieves you from the pains and complications of life, and that Claudios own children will hate him for not dying sooner.", 4, "fuchsia"],
+					["Tell a joke to lighten the mood.", -1], 
+					["Quit toying with Claudios life and return to Vienna as the Duke.", -1],
+					["Return to Juliet in her cell.", 2]
+				],
+		"quote": "\"That bears the name of life? Yet in this life Lie hid more thousand deaths; yet death we fear, That makes these odds all even.\" (iii.i.41)"
+	},
+	{
+		"title": "Act 3 Scene 1",
+		"image": "https://image000.tutpad.com/tut/0/53/32-done.gif",
+		"info": "You find out that Angelo offered to spare Claudios life in exchange for sex with his sister, Isabella. You take Isabella aside and reveal a plan to save her brothers life while keeping her virginity.",
+		"choices": [
+					["Explain how Angelo had a wife named Mariana whom he divorced when she lost her fortune. You tell Isabella to agree to Angelos request but in a dark location. You will then switch Isabella with Mariana, thus satisfying Angelo, freeing Isabellas brother, and keeping her virginity (you assume Mariana will agree).", 5, "fuchsia"], 
+					["Save Isabella, Juliet, and Claudio by returning to Vienna as the Duke.", -1],
+					["Forget the plan and return to Claudio in his cell.", 3]
+				],
+		"quote": "\"If you think well to carry this as you may, the doubleness of the benefit defends the deceit from reproof. What think you of it?\" (iii.i.283)"
+	},
+	{
+		"title": "Act 4 Scene 1",
+		"image": "https://image000.tutpad.com/tut/0/53/32-done.gif",
+		"info": "The plan has worked! However, Angelo will still execute Claudio in order to invalidate Isabella and prevent revenge. You visits Provost and tel him at Claudios jail just before he is to be executed, a drunk pirate named Barnardine is also in the jail to be executed.",
+		"choices": [
+					["Absolve Claudio of his sins again!", -1, "cyan"], 
+					["Save Claudio by returning to Vienna as the Duke.", -1],
+					["Have Claudios head sent to Angelo.", -1],
+					["Eexecute Barnardine, make him look like Claudio, and send his head to Lord Angelo.", 6]
+				],
+		"quote": "\"By the vow of mine order I warrant you, if my instructions may be your guide. Let this Barnardine be this morning executed and his head borne to Angelo.\" (iv.ii.183)"
+	},
+	{
+		"title": "Act 5 Scene 1",
+		"image": "http://i.imgur.com/JJAIhfX.gif",
+		"info": "The plan worked again! You return to Vienna as the Duke and then disguised again as Friar Lodwick, Lucio falsely accuses you of speaking ill of yourself. You are about to be arrested and tortured.",
+		"choices": [
+					["Accept your fate and are sent to jail as Friar Lodwick.", -1], 
+					["RETURN AS THE DUKE.", 7, "lime"],
+				],
+		"quote": "\"Respect to your great place, and let the devil Be sometime honored for his burning throne. Where is the Duke? Tis he should hear me speak.\" (v.i.330)"
+	}
+];
+
+var beep = document.createElement("audio");
+	beep.src="beep.mp3";
+	beep.preLoad=true;
+var over = document.createElement("audio");
+	over.src="over.mp3";
+
+function loadScene(scene) {
+	$('#scene #title').text(scene.title);
+	$('#scene #image').attr('src', scene.image);
+	$('#scene #info').text(scene.info);
+	var choicesList = "";
+	console.log(scene.choices[1]);
+	for (i in scene.choices) {
+		if (scene.choices[i][2] != undefined) {
+			choicesList += '<h3 style="color:' + scene.choices[i][2] + '" class="choice" id="' + scene.choices[i][1] + '">' + scene.choices[i][0] + '</h3><br>';
+		} else {
+			choicesList += '<h3 class="choice" id="' + scene.choices[i][1] + '">' + scene.choices[i][0] + '</h3><br>';
+		}
+	}
+	$('#scene #choices').html(choicesList);
+	$('#scene #quote').text(scene.quote);
+	$('.choice').click(function(e) {
+		var id = e.currentTarget.id;
+		if (id == -2) {
+			$('.slide').show();
+			$('.slide').not('#character').hide();
+		} 
+		else if (id == -1) {
+			$('.slide').show();
+			$('.slide').not('#fail').hide();
+			over.play();
+		} 
+		else if (id == 7) {
+			$('.slide').show();
+			$('.slide').not('#end').hide();
+			$('h4').click(function() {
+				if($(this).hasClass('selected')) {
+					$(this).removeClass('selected');
+				} else {
+					$(this).addClass('selected');
+				}
+			});
+		} else {
+			loadScene(scenes[id]);
+		}
+	});
+	$('h3, figure').click(function() {
+		beep.play();
+	});
+}
+$(document).ready(function() {
+	$('.slide').not('#intro').hide();
+	$('h3').click(function() {
+		beep.play();
+	});
+});
+
+</script>
+
+
+</html>
