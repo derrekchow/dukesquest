@@ -248,13 +248,13 @@ function loadScene(scene) {
 			loadScene(scenes[id]);
 		}
 	});
-	$('h3, figure').click(function() {
+	$('h3, figure, h5').click(function() {
 		beep.play();
 	});
 }
 $(document).ready(function() {
 	$('.slide').not('#intro').hide();
-	$('h3').click(function() {
+	$('h3, h5').click(function() {
 		beep.play();
 	});
 });
